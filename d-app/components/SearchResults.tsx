@@ -1,8 +1,12 @@
 import User from "../interfaces/User";
+import { useState } from "react";
 
-
-export default function SearchResults(users: User[]): any {
-
+type Props = {
+    users: User[]
+}
+function SearchResults({users}: Props) {
+// const [users, setUser] = useState(input);
+// users.push({id: 1, name: 'test', gender: 'f'});
     return (
         <>
             <h1>Search Results</h1>
@@ -14,3 +18,5 @@ export default function SearchResults(users: User[]): any {
         </>
     );
 }
+
+export default SearchResults;
