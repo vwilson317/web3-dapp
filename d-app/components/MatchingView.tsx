@@ -11,7 +11,7 @@ import Store from '../store';
 import { useAppSelector, useAppDispatch } from '../hooks'
 import { selectCount, increment } from '../features/counter/counterSlice';
 
-const MatchingView = () => {
+const MatchingView = ({ navigation }: any) => {
     const dispatch = useAppDispatch();
     const {state: {contract, accounts}} = useEth();
     const [totalSupply, setTotalSupply] = useState(0);

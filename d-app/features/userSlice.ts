@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../store'
 import User from '../interfaces/User'
+import getUsersAsync from '../services/UserService';
 
 // Define a type for the slice state
 interface UserState {
@@ -20,6 +21,11 @@ export const userSlice = createSlice({
     set: (state, action: PayloadAction<User[]>) => {
       state.users = action.payload;
     },
+    // getAsync: (state, action: PayloadAction<string>) => {
+    //   getUsersAsync(action.payload).then((users: User[]) => {
+    //     state.users = users;
+    //   })
+    // }
     // decrement: (state) => {
     //   state.value -= 1
     // },
@@ -27,8 +33,8 @@ export const userSlice = createSlice({
     // incrementByAmount: (state, action: PayloadAction<number>) => {
     //   state.value += action.payload
     // },
-  },
-})
+  }
+});
 
 export const { set } = userSlice.actions
 

@@ -7,7 +7,7 @@ const Drawer = createDrawerNavigator();
 function MyDrawer() {
   return (
     <Drawer.Navigator>
-      {/* <Drawer.Screen name="Matching" component={MatchingView} /> */}
+      <Drawer.Screen name="Matching" component={MatchingView} />
       <Drawer.Screen name="Search" component={SearchView} />
     </Drawer.Navigator>
   );

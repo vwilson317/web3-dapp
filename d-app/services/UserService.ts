@@ -1,6 +1,6 @@
 import User from "../interfaces/User";
 
-export default async function getUsers(input: string) {
+export default async function getUsersAsync(input: string): Promise<User[]> {
   const users: User[] = [];
 
   // Fetch users from API
