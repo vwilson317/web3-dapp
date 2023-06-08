@@ -1,4 +1,26 @@
-.classidk{
-    background-color: red;
-    border: 10px dashed black;
+.container {
+    flex: 1;
+    background-color: #D3D3D3; //gray
+    align-items: center;
+    justify-content: center;
+}
+
+.row {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.nav {
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.navItem {
+    flex: 1;
+    align-items: center;
+    padding: 10px;
+}
+
+.subNavItem {
+    padding: 5px;
 }

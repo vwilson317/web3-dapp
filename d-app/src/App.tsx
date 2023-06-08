@@ -4,12 +4,11 @@ import { Provider } from 'react-redux';
 import store from '../store';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import 'react-native-gesture-handler';
-import MyDrawer from '../components/Drawer';
-import { registerRootComponent } from 'expo';
+// import 'react-native-gesture-handler';
 import MatchingView from '../components/MatchingView';
 import SearchView from '../components/SearchView';
-import stylesI from './App.scss';
+import styles from './App.scss';
+import MyDrawer from '../components/Drawer';
 
 function App() {
   const Stack = createNativeStackNavigator();
@@ -19,47 +18,22 @@ function App() {
   // });
 
   return (
-    // <NavigationContainer>
-      <Provider store={store}>
-        <EthProvider>
-          <View className={stylesI.classidk}>
-          {/* <MatchingView /> */}
-
-          <SearchView />
-          {/* <Stack.Screen name="Home" component={MatchingView} />
-          <Stack.Screen name="Search" component={SearchView} /> */}
-          </View>
-        </EthProvider>
-      </Provider>
-    // </NavigationContainer>
+    <Provider store={store}>
+      <EthProvider>
+        <NavigationContainer>
+          {/* <View className={styles.container}> */}
+            <MyDrawer className={styles.container}/>
+            {/* // <MatchingView />
+          // <SearchView /> */}
+            {/* <Stack.Navigator>
+              <Stack.Screen name="Home" component={MatchingView} />
+              <Stack.Screen name="Search" component={SearchView} />
+            </Stack.Navigator> */}
+          {/* </View> */}
+        </NavigationContainer>
+      </EthProvider>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#D3D3D3',//gray
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  row: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  nav: {
-    flexDirection: "row",
-    justifyContent: "space-around"
-  },
-  navItem: {
-    flex: 1,
-    alignItems: "center",
-    padding: 10
-  },
-  subNavItem: {
-    padding: 5
-  },
-});
-
-// AppRegistry.registerComponent('App', () => App);
 
 export default App;
