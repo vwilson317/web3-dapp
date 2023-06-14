@@ -10,6 +10,7 @@ import User from '../interfaces/User';
 import Store from '../store';
 import { useAppSelector, useAppDispatch } from '../hooks'
 import { selectCount, increment } from '../features/counter/counterSlice';
+import styles from '../src/styles/Global.scss';
 
 const MatchingView = ({ navigation }: any) => {
   const dispatch = useAppDispatch();
@@ -23,7 +24,6 @@ const MatchingView = ({ navigation }: any) => {
   const user4: User = { id: 4, name: 'user4', gender: 'f' };
   const user5: User = { id: 5, name: 'user5', gender: 'm' };
   const user6: User = { id: 6, name: 'user6', gender: 'f' };
-
 
   const matchResults: Match[] = [
     {
@@ -91,8 +91,8 @@ const MatchingView = ({ navigation }: any) => {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.row}>
+    <View className={styles.container}>
+      <View className={styles.row}>
         {getMatch().users.map((user: User) => {
           return <ProfileCard key={user.id} {...user} />
         })}
@@ -100,22 +100,8 @@ const MatchingView = ({ navigation }: any) => {
       <Button type="clear" title="Match" onPress={onClick}></Button>
       <Text>Total Supply: {totalSupply}</Text>
       <StatusBar style="auto" />
-    </View>
+    <View/>
   )
 }
-
-//todo: find out this works and the scss file doesn't do a row
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  row: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-});
 
 export default MatchingView;
