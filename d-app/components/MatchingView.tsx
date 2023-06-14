@@ -100,8 +100,8 @@ const MatchingView = ({ navigation }: any) => {
       <Button type="clear" title="Match" onPress={onClick}></Button>
       <Text>Total Supply: {totalSupply}</Text>
       <StatusBar style="auto" />
-    <View/>
-  )
+      <View />
+    </View>
+  );
 }
-
 export default MatchingView;
