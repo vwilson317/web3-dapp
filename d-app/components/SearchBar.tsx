@@ -10,9 +10,10 @@ import { Button, Input } from "@rneui/themed";
 export default function SearchBar(): ReactElement {
     const [input, setInput] = useState('');
     const dispatch = useAppDispatch();
-    const api = new UserService('');
+    const api = new UserService('http://localhost:3000');
     const onPress = () => {
         api.getUsers(input).then((users: any) => {
+            debugger
             dispatch(set(users));
         });
     };

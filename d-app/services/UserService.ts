@@ -10,7 +10,7 @@ export default class UserApiService extends ApiService {
     //@ts-ignore
     const nameHack: string = _.isEmpty(userName) ? "John Doe" : userName;
     users.push({id: 1, name: nameHack, gender:'m'});
-    return new Promise<User[]>((resolve, _) =>{resolve(users)});
+    //return new Promise<User[]>((resolve, _) =>{resolve(users)});
 
     return this.get<User[]>('/users');
   }
