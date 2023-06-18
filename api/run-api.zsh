@@ -10,10 +10,10 @@ else
 fi
 
 # Check if the container is running
-if docker ps -q --filter "name=<container_name>"; then
-  echo "API: Container is running already"
-else
-  echo "Container is not running"
-  docker run -d -p 3000 api
-  echo "API Container is running port[3000]"
-fi
+# if docker ps -q --filter "name=<container_name>"; then #this doesn't work
+#   echo "API: Container is running already"
+# else
+#   echo "Container is not running"
+  docker run -d -p 3000:3000 api
+#   echo "API Container is running port[3000]"
+# fi

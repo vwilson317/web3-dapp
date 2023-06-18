@@ -13,8 +13,10 @@ export default function SearchBar(): ReactElement {
     const api = new UserService('http://localhost:3000');
     const onPress = () => {
         api.getUsers(input).then((users: any) => {
-            debugger
             dispatch(set(users));
+        }).catch((err: any) => {
+            console.log(err);
+            console.log('container is probably not running')
         });
     };
 
