@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import ProfileCard from './ProfileCard';
+import ProfileCard from './Profile/ProfileCard';
 import { Button, Text } from '@rneui/themed';
 import { StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';

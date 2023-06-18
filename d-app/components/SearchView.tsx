@@ -1,13 +1,14 @@
 import SearchResults from "./SearchResults";
 import SearchBar from "./SearchBar";
-import getUsersAsync from "../services/UserService";
 import User from "../interfaces/User";
 import { useState, useEffect } from "react";
 import { useAppSelector } from '../hooks'
 import { getUsers } from "../features/userSlice";
 import { set } from "react-native-reanimated";
+import { StyleSheet, View } from 'react-native';
+
 // import '../styles/SearchingView.module.scss';
-import '../src/styles/Global.scss';
+import styles from '../src/styles/Global.scss';
 
 const SearchView = ({ navigation }: any) => {
     const stateUsers = useAppSelector(getUsers);
@@ -17,19 +18,23 @@ const SearchView = ({ navigation }: any) => {
         setUsers(stateUsers);
     });
     const results = () => {
-        if(users.length > 0){
+        if (users.length > 0) {
             return <SearchResults users={users} />
         }
-        else{
+        else {
             return <h2>No Results</h2>
         }
     };
     return (
-        <div className="test">
-            <h1>Search View</h1>
-            <SearchBar />
-            {results()}
-        </div>
+        <View className={styles.container}>
+            <View className={styles.row}>
+                <div className="test">
+                    <h1>Search View</h1>
+                    <SearchBar />
+                    {results()}
+                </div>
+            </View>
+        </View>
     );
 }
 

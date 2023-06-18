@@ -1,16 +1,18 @@
+import { FC, ReactElement }  from 'react';
 import { set } from "../features/userSlice";
-import getUsers from "../services/UserService";
+import UserService from "../services/UserService";
+// import getUsers from "../services/UserService";
 import { useAppDispatch } from '../hooks'
 import { useState } from "react";
 import { Button, Input } from "@rneui/themed";
 // import { getAsync } from "../features/userSlice";
 
-export default function SearchBar(): any {
+export default function SearchBar(): ReactElement {
     const [input, setInput] = useState('');
     const dispatch = useAppDispatch();
-
+    const api = new UserService('');
     const onPress = () => {
-        getUsers(input).then((users: any) => {
+        api.getUsers(input).then((users: any) => {
             dispatch(set(users));
         });
     };
