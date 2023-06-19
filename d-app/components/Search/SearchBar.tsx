@@ -1,8 +1,8 @@
 import { FC, ReactElement }  from 'react';
-import { set } from "../features/userSlice";
-import UserService from "../services/UserService";
+import { set } from "../../features/userSlice";
+import UserService from "../../services/UserService";
 // import getUsers from "../services/UserService";
-import { useAppDispatch } from '../hooks'
+import { useAppDispatch } from '../../hooks'
 import { useState } from "react";
 import { Button, Input } from "@rneui/themed";
 // import { getAsync } from "../features/userSlice";

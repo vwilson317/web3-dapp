@@ -1,6 +1,5 @@
 import { Card, Text } from '@rneui/themed';
 import useEth from '../../contexts/EthContext/useEth';
-import User from '../../interfaces/User';
 import { View, Pressable, ImageBackground } from 'react-native';
 import Animated, {
   Extrapolate,

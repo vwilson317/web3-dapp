@@ -6,25 +6,22 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import styles from './App.scss';
 import MyDrawer from "../components/Drawer";
 import React, { createContext } from "react";
+// import { GlobalScss } from "../styles/Global.scss";
+import ThemeProviderCustom from "../components/ThemeProvider";
 
 function App() {
-  const Stack = createNativeStackNavigator();
-
-  const context = React.createContext(null);
-  //@ts-ignore
-  const dispatchNew = createDispatchHook(context);
-  // useEffect(() => {
-
-  // });
 
   return (
-    <Provider store={store}>
-      <EthProvider>
-        <NavigationContainer>
+    <ThemeProviderCustom>
+      <Provider store={store}>
+        <EthProvider>
+          <NavigationContainer>
+            {/* <GlobalScss /> */}
             <MyDrawer />
-        </NavigationContainer>
-      </EthProvider>
-    </Provider>
+          </NavigationContainer>
+        </EthProvider>
+      </Provider>
+    </ThemeProviderCustom>
   );
 }
 

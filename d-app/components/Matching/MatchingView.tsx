@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
-import ProfileCard from './Profile/ProfileCard';
+import ProfileCard from '../Profile/ProfileCard';
 import { Button, Text } from '@rneui/themed';
 import { StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import useEth from '../contexts/EthContext/useEth';
+import useEth from '../../contexts/EthContext/useEth';
 // import styles from './styles/MatchingView.module.scss';
-import Match from '../interfaces/Match';
-import User from '../interfaces/User';
-import Store from '../store';
-import { useAppSelector, useAppDispatch } from '../hooks'
-import { selectCount, increment } from '../features/counter/counterSlice';
-import styles from '../src/styles/Global.scss';
+import Match from '../../interfaces/Match';
+import Store from '../../store';
+import { useAppSelector, useAppDispatch } from '../../hooks'
+import { selectCount, increment } from '../../features/counter/counterSlice';
+import styles from '../../src/styles/Global.scss';
 
 const MatchingView = ({ navigation }: any) => {
   const dispatch = useAppDispatch();

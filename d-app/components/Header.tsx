@@ -2,10 +2,11 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import Login from './Login/Login';
 import { FaUser } from 'react-icons/fa';
+
 const Header: React.FC = () => {
   return (
     <View style={styles.container}>
-      <Login icon={<FaUser />}/>
+      <Login icon={<FaUser size={'2em'} />}/>
     </View>
   );
 };

@@ -1,14 +1,13 @@
 import SearchResults from "./SearchResults";
 import SearchBar from "./SearchBar";
-import User from "../interfaces/User";
 import { useState, useEffect } from "react";
-import { useAppSelector } from '../hooks'
-import { getUsers } from "../features/userSlice";
+import { useAppSelector } from '../../hooks'
+import { getUsers } from "../../features/userSlice";
 import { set } from "react-native-reanimated";
 import { StyleSheet, View } from 'react-native';
 
 // import '../styles/SearchingView.module.scss';
-import styles from '../src/styles/Global.scss';
+import styles from '../../src/styles/Global.scss';
 
 const SearchView = ({ navigation }: any) => {
     const stateUsers = useAppSelector(getUsers);

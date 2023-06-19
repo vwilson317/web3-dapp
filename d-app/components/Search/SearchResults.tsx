@@ -1,4 +1,3 @@
-import User from "../interfaces/User";
 import { useState } from "react";
 
 type Props = {

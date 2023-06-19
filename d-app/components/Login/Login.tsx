@@ -4,8 +4,10 @@ import { setLoginUser, getLoginUser } from '../../features/userSlice';
 // import { FaUser } from 'react-icons/fa';
 import { Button, Input, Text } from '@rneui/themed';
 import { IconType } from 'react-icons/lib';
-import styles from '../../src/styles/Global.scss';
+import gStyles from '../../src/styles/Global.scss';
 import { View, StyleSheet } from 'react-native';
+import styles from './Login.scss';
+//@ts-ignore
 import _ from 'lodash';
 
 interface LoginProps {
@@ -57,15 +59,25 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
         )
     }
 
+    const UserIdComponent = () => {
+        return (
+            <>
+                <View style={[styles2.item, styles.icon]}>
+                    <div className={styles.div}>
+                    {icon}
+                    </div>
+                </View>
+                <View className={styles2.item}>
+                    <Text>{loginUser?.name}</Text>
+                </View>
+            </>
+        )
+    }
+
     return (
         <View className={styles.container}>
             <View className={styles.row}>
-                <View style={styles.item}>
-                    {icon}
-                </View>
-                <View className={styles.item}>
-                    <Text>{loginUser?.name}</Text>
-                </View>
+                {!_.isEmpty(loginUser) ? UserIdComponent() : <></>}
                 {_.isEmpty(loginUser) ? LoginComponents() : <></>}
             </View>
         </View>
