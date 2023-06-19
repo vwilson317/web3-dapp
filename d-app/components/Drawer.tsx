@@ -10,7 +10,7 @@ const Drawer = createDrawerNavigator();
 
 function MyDrawer() {
   return (
-    <Drawer.Navigator
+    <Drawer.Navigator initialRouteName="Home"
     screenOptions={({ navigation }) => ({
       headerRight: () => (
         <Header />

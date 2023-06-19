@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import Login from './Login/Login';
+import Login from './Login/LoginHeader';
 import { FaUser } from 'react-icons/fa';
 
 const Header: React.FC = () => {

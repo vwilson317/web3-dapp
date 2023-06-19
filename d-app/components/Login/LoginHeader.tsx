@@ -6,15 +6,17 @@ import { Button, Input, Text } from '@rneui/themed';
 import { IconType } from 'react-icons/lib';
 import gStyles from '../../src/styles/Global.scss';
 import { View, StyleSheet } from 'react-native';
-import styles from './Login.scss';
+import styles from './LoginHeader.scss';
 //@ts-ignore
 import _ from 'lodash';
+import { useNavigation } from '@react-navigation/native';
 
 interface LoginProps {
     icon: IconType; // Replace with the actual icon component you want to use
 }
 
 const Login: React.FC<LoginProps> = ({ icon }) => {
+    const navigation = useNavigation();
     const dispatch = useDispatch();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -32,6 +34,10 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
         setUsername('');
         setPassword('');
     };
+
+    const createPress = () => {
+        navigation.navigate('CreateAccount');
+    }
 
     const LoginComponents = () => {
         return (<>
@@ -55,6 +61,7 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
             <View className={styles.item}>
                 <Button title="Login" onPress={handleLogin} />
             </View>
+            <Text onPress={createPress}>Create Account</Text>
         </>
         )
     }
@@ -75,8 +82,8 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
     }
 
     return (
-        <View className={styles.container}>
-            <View className={styles.row}>
+        <View className={gStyles.container}>
+            <View className={gStyles.row}>
                 {!_.isEmpty(loginUser) ? UserIdComponent() : <></>}
                 {_.isEmpty(loginUser) ? LoginComponents() : <></>}
             </View>
@@ -85,18 +92,13 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
 };
 
 const styles2 = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    row: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingHorizontal: 16,
-        paddingVertical: 8,
-    },
+    // row: {
+    //     flexDirection: 'row',
+    //     alignItems: 'center',
+    //     justifyContent: 'space-between',
+    //     paddingHorizontal: 16,
+    //     paddingVertical: 8,
+    // },
     item: {
         flex: 1,
         marginHorizontal: 8,

@@ -14,16 +14,19 @@ const countdownAnimation = keyframes`
 `;
 
 // Styled components for the countdown timer and animation
-const CountdownWrapper = styled.div`
-  font-size: 24px;
-  font-weight: bold;
-  color: #333333;
-  animation: ${({ animate }) => (animate ? `${countdownAnimation} 1s linear forwards` : 'none')};
-`;
+// const CountdownWrapper = styled.div`
+//   font-size: 24px;
+//   font-weight: bold;
+//   color: #333333;
+//   animation: ${({ animate }) => (animate ? `${countdownAnimation} 1s linear forwards` : 'none')};
+// `;
+
+// Styled components for the countdown timer and animation
+const CountdownWrapper = styled.div;
 
 const Countdown = () => {
   const [countdown, setCountdown] = useState(10);//useState(24 * 60 * 60); // 24 hours in seconds
-  const [animate, setAnimate] = useState(false);
+//   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -55,7 +58,7 @@ const Countdown = () => {
   };
 
   return (
-    <CountdownWrapper animate={animate}>
+    <CountdownWrapper>
       {formatTime(countdown)}
     </CountdownWrapper>
   );

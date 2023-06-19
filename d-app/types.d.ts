@@ -8,3 +8,22 @@ interface User {
     name: string;
     gender: string;
 }
+
+interface LoginUser {
+    id: number;
+    name: string;
+    lastSearchDt: Date;
+    assets: Asset[];
+}
+
+interface Asset {
+    src: string; // url
+    type: AssetType;
+    metaData: any;
+}
+
+export enum AssetType {
+    LOGIN_ICON,
+    PROFILE_PICTURE,
+    CONVERSATION
+}
