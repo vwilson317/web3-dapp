@@ -1,0 +1,100 @@
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLoginUser, getLoginUser } from '../../features/userSlice';
+// import { FaUser } from 'react-icons/fa';
+import { Button, Input, Text } from '@rneui/themed';
+import { IconType } from 'react-icons/lib';
+import styles from '../../src/styles/Global.scss';
+import { View, StyleSheet } from 'react-native';
+import _ from 'lodash';
+
+interface LoginProps {
+    icon: IconType; // Replace with the actual icon component you want to use
+}
+
+const Login: React.FC<LoginProps> = ({ icon }) => {
+    const dispatch = useDispatch();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const loginUser = useSelector(getLoginUser);
+
+    const handleLogin = () => {
+        // Perform login logic here
+        // Example: Call an API to authenticate user credentials
+
+        // Assuming the login was successful, set the user in Redux
+        const user = { name: username } as User;
+        dispatch(setLoginUser(user));
+
+        // Reset input fields
+        setUsername('');
+        setPassword('');
+    };
+
+    const LoginComponents = () => {
+        return (<>
+            <View className={styles.item}>
+                <Input
+                    className={styles.input}
+                    placeholder="Username"
+                    value={username}
+                    onChangeText={setUsername}
+                />
+            </View>
+            <View className={styles.item} >
+                <Input
+                    className={styles.input}
+                    placeholder="Password"
+                    value={password}
+                    onChangeText={setPassword}
+                    secureTextEntry
+                />
+            </View>
+            <View className={styles.item}>
+                <Button title="Login" onPress={handleLogin} />
+            </View>
+        </>
+        )
+    }
+
+    return (
+        <View className={styles.container}>
+            <View className={styles.row}>
+                <View style={styles.item}>
+                    {icon}
+                </View>
+                <View className={styles.item}>
+                    <Text>{loginUser?.name}</Text>
+                </View>
+                {_.isEmpty(loginUser) ? LoginComponents() : <></>}
+            </View>
+        </View>
+    );
+};
+
+const styles2 = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    row: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: 16,
+        paddingVertical: 8,
+    },
+    item: {
+        flex: 1,
+        marginHorizontal: 8,
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 4,
+        padding: 8,
+    },
+});
+
+export default Login;

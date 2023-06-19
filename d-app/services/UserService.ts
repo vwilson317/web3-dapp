@@ -1,5 +1,4 @@
 import ApiService from './ApiService';
-import User from "../interfaces/User";
 import _ from 'lodash';
 
 export default class UserApiService extends ApiService {
