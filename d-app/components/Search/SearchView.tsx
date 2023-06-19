@@ -8,6 +8,7 @@ import { StyleSheet, View } from 'react-native';
 
 // import '../styles/SearchingView.module.scss';
 import styles from '../../src/styles/Global.scss';
+import CountDown from "./CountDown/CountDown";
 
 const SearchView = ({ navigation }: any) => {
     const stateUsers = useAppSelector(getUsers);
@@ -30,6 +31,7 @@ const SearchView = ({ navigation }: any) => {
                 <div className="test">
                     <h1>Search View</h1>
                     <SearchBar />
+                    <CountDown />
                     {results()}
                 </div>
             </View>
