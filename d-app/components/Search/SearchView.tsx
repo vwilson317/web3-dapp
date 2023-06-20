@@ -31,7 +31,7 @@ const SearchView = ({ navigation }: any) => {
                 <div className="test">
                     <h1>Search View</h1>
                     <SearchBar />
-                    <CountDown />
+                    {/* <CountDown /> */}
                     {results()}
                 </div>
             </View>

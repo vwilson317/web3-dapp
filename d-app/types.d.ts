@@ -14,6 +14,8 @@ interface LoginUser {
     name: string;
     lastSearchDt: Date;
     assets: Asset[];
+    displayName: string;
+    //ignores password
 }
 
 interface Asset {

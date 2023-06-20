@@ -6,7 +6,7 @@ import { Button, Input, Text } from '@rneui/themed';
 import { IconType } from 'react-icons/lib';
 //@ts-ignore
 import gStyles from '../../src/styles/Global.scss';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 //@ts-ignore
 import styles from './LoginHeader.scss';
 //@ts-ignore
@@ -15,6 +15,7 @@ import { useNavigation } from '@react-navigation/native';
 import { LoginUser } from '../../types';
 import { ServicesContext } from '../ApiProvider';
 import { showToast, ToastType } from '../../common/ToastUtil';
+import SubMenu from '../SubMenu';
 
 interface LoginProps {
     icon: IconType; // Replace with the actual icon component you want to use
@@ -26,6 +27,7 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
     const [username, setUsername] = useState<string>('john@example.com');//useState<string>('John Doe (Display Name)')
     const [password, setPassword] = useState<string>('123');//useState('');
     const loginUser = useSelector(getLoginUser);
+    const [isOpen, setIsOpen] = useState(false);
     const loginService = useContext(ServicesContext)?.loginApi;
 
     const handleLogin = async () => {
@@ -48,6 +50,14 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
         // Reset input fields
         // setUsername('');
         // setPassword('');
+    };
+
+    const handleLogout = () => {
+        dispatch(setLoginUser({} as LoginUser));
+    };
+
+    const handleToggleSubMenu = () => {
+        setIsOpen(!isOpen);
     };
 
     const createPress = () => {
@@ -83,7 +93,7 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
 
     const UserIdComponent = () => {
         return (
-            <>
+            <TouchableOpacity onPress={handleToggleSubMenu} style={styles.menuButton}>
                 <View style={[styles2.item, styles.icon]}>
                     <div className={styles.div}>
                         {icon}
@@ -92,7 +102,8 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
                 <View className={styles2.item}>
                     <Text>{loginUser?.displayName}</Text>
                 </View>
-            </>
+                <SubMenu onLogout={handleLogout} isOpen={isOpen} />
+            </TouchableOpacity>
         )
     }
 

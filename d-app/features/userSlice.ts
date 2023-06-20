@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
 import getUsersAsync from '../services/UserService';
 import { LoginUser } from '../types';
+//@ts-ignore
+import _ from 'lodash';
 
 // Define a type for the slice state
 interface UserState {
@@ -46,5 +48,6 @@ export const { set, setLoginUser } = userSlice.actions;
 // Other code such as selectors can use the imported `RootState` type
 export const getUsers = (state: RootState) => state.user.users;
 export const getLoginUser = (state: RootState) => state.user.loginUser; // todo: move this
+export const isLoggedin = (state: RootState) => !_.isEmpty(state.user.loginUser);
 
 export default userSlice.reducer;

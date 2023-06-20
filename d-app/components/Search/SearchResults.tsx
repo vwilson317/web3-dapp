@@ -4,8 +4,6 @@ type Props = {
     users: User[]
 }
 function SearchResults({users}: Props) {
-// const [users, setUser] = useState(input);
-// users.push({id: 1, name: 'test', gender: 'f'});
     return (
         <>
             <h1>Search Results</h1>

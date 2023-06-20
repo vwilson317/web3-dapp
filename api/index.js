@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const _ = require('lodash');
 
 // Load environment variables from a .env file
 dotenv.config();
@@ -23,9 +24,10 @@ app.post('/login', (req, res) => {
   const loginRequest = req.body;
   // todo: implement db logic
   let loginUser = users.filter((u) => (u.email === loginRequest.email || u.displayName === loginRequest.displayName)
-    && u.password === loginRequest.password);
+    && u.password === loginRequest.password)[0];
 
-  if (loginUser.length === 1) {
+  
+  if (!_.isEmpty(loginUser)) {
     loginUser.lastSearchDt = new Date(Date.now() + 1 * 60000);
     loginUser.assets = [];
     res.json(loginUser);
