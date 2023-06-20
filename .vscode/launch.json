@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "Attach to Chrome",
+            "port": 9222,
+            "request": "attach",
+            "type": "chrome",
+            "webRoot": "${workspaceFolder}/d-app/src"
+        },
+        {
+            "type": "chrome",
+            "name": "http:localhost:19000",
+            "request": "launch",
+            "url": "http:localhost:19000"
+        }
+    ]
+}

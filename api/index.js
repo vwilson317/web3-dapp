@@ -14,9 +14,25 @@ app.use(express.json());
 
 // Example in-memory user database
 let users = [
-  { id: 1, name: 'John Doe', email: 'john@example.com' },
-  { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
+  { id: 1, name: 'John Doe', email: 'john@example.com', password: '123', displayName : 'John Doe (Display Name)' },
+  { id: 2, name: 'Jane Smith', email: 'jane@example.com', password: '456', displayName : 'Jane Smith (Display Name)' }
 ];
+
+// Login
+app.post('/login', (req, res) => {
+  const loginRequest = req.body;
+  // todo: implement db logic
+  let loginUser = users.filter((u) => (u.email === loginRequest.email || u.displayName === loginRequest.displayName)
+    && u.password === loginRequest.password);
+
+  if (loginUser.length === 1) {
+    loginUser.lastSearchDt = new Date(Date.now() + 1 * 60000);
+    loginUser.assets = [];
+    res.json(loginUser);
+  } else{
+    res.status(204).json({ error: 'User not found' });
+  }
+});
 
 // Get all users
 app.get('/users', (req, res) => {

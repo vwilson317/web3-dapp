@@ -8,6 +8,7 @@ import React, { createContext } from "react";
 // import { GlobalScss } from "../styles/Global.scss";
 import ThemeProviderCustom from "../components/ThemeProvider";
 import CreateAccountScreen from "../components/Account/CreateAccountScreen";
+import ApiProvider from "../components/ApiProvider";
 
 function App() {
   const Stack = createNativeStackNavigator();
@@ -16,12 +17,14 @@ function App() {
     <ThemeProviderCustom>
       <Provider store={store}>
         <EthProvider>
-          <NavigationContainer>
-          <Stack.Navigator initialRouteName="Drawer">
-              <Stack.Screen name="Drawer" component={MyDrawer} options={{headerShown: false}}/>
-              <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
-            </Stack.Navigator>
-          </NavigationContainer>
+          <ApiProvider>
+            <NavigationContainer>
+              <Stack.Navigator initialRouteName="Drawer">
+                <Stack.Screen name="Drawer" component={MyDrawer} options={{ headerShown: false }} />
+                <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </ApiProvider>
         </EthProvider>
       </Provider>
     </ThemeProviderCustom>

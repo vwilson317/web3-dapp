@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Platform, ToastAndroid } from 'react-native';
-import Toast from 'react-native-toast-message';
-
-export enum ToastType {
-    success = 'success',
-    error = 'error',
-    info = 'info',
-    any = 'any'
-};
+import { View, TextInput, Button } from 'react-native';
+import { showToast, ToastType } from '../../common/ToastUtil';
 
 const CreateAccountScreen: React.FC = () => {
     const [username, setUsername] = useState('');
@@ -15,16 +8,6 @@ const CreateAccountScreen: React.FC = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [email, setEmail] = useState('');
 
-    const showToast = (type: string, message: string) => {
-        if (Platform.OS === 'android') {
-            ToastAndroid.show(message, ToastAndroid.LONG);
-        } else {
-            Toast.show({
-                type: type,
-                text1: message,
-            });
-        }
-    };
 
     const handleCreateAccount = () => {
         // Password complexity validation

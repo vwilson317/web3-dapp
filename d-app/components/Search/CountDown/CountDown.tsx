@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useAppSelector } from '../../../hooks';
 import styled, { keyframes } from 'styled-components';
 
 // Define the keyframe animation for the countdown animation
@@ -27,6 +28,7 @@ const CountdownWrapper = styled.div;
 const Countdown = () => {
   const [countdown, setCountdown] = useState(10);//useState(24 * 60 * 60); // 24 hours in seconds
 //   const [animate, setAnimate] = useState(false);
+    const [searchEnabled, setSearchEnabled] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -43,7 +45,7 @@ const Countdown = () => {
     // Trigger animation when countdown reaches 0
     if (countdown === 0) {
       //setAnimate(true); doesn't work
-      searchEnabled 
+      setSearchEnabled(true); 
     }
   }, [countdown]);
 

@@ -8,7 +8,7 @@ import '../src/styles/theme.scss';
 const theme = createGlobalStyle({
 });
 
-const ThemeProviderCustom: React.FC = ({ children }) => (
+export const ThemeProviderCustom: React.FC = ({ children }) => (
     <ThemeProvider theme={theme}>
       {children}
     </ThemeProvider>

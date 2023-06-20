@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
 import getUsersAsync from '../services/UserService';
+import { LoginUser } from '../types';
 
 // Define a type for the slice state
 interface UserState {
   users: User[],
-  loginUser?: User
+  loginUser?: LoginUser
 }
 
 // Define the initial state using that type
@@ -22,7 +23,7 @@ export const userSlice = createSlice({
     set: (state, action: PayloadAction<User[]>) => {
       state.users = action.payload;
     },
-    setLoginUser: (state, action: PayloadAction<User>) => {
+    setLoginUser: (state, action: PayloadAction<LoginUser>) => {
       state.loginUser = action.payload;
     },
     // getAsync: (state, action: PayloadAction<string>) => {
@@ -40,10 +41,10 @@ export const userSlice = createSlice({
   }
 });
 
-export const { set, setLoginUser } = userSlice.actions
+export const { set, setLoginUser } = userSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const getUsers = (state: RootState) => state.user.users;
 export const getLoginUser = (state: RootState) => state.user.loginUser; // todo: move this
 
-export default userSlice.reducer
+export default userSlice.reducer;
