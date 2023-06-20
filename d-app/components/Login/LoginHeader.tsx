@@ -54,6 +54,7 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
 
     const handleLogout = () => {
         dispatch(setLoginUser({} as LoginUser));
+        handleToggleSubMenu();
     };
 
     const handleToggleSubMenu = () => {
