@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+//@ts-ignore
+import gStyles from '../src/styles/Global.scss';
 
-const SubMenu = ({ onLogout, isOpen }) => {
-//   const [isOpen, setIsOpen] = useState(false);
+interface SubMenuProps {
+  onLogout: () => void;
+  isOpen: boolean;
+}
 
-//   const handleToggleSubMenu = () => {
-//     setIsOpen(!isOpen);
-//   };
-
+const SubMenu = ({ onLogout, isOpen }: SubMenuProps) => {
   const handleLogout = () => {
     // Call the logout function passed as a prop
     onLogout();
@@ -15,13 +16,9 @@ const SubMenu = ({ onLogout, isOpen }) => {
   };
 
   return (
-    <View style={styles.container}>
-      {/* <TouchableOpacity onPress={handleToggleSubMenu} style={styles.menuButton}>
-        <Text style={styles.menuText}>Menu</Text>
-      </TouchableOpacity> */}
-
+    <View style={gStyles.container}>
       {isOpen && (
-        <View style={styles.subMenu}>
+        <View style={[gStyles.row, styles.subMenu]}>
           <TouchableOpacity onPress={handleLogout} style={styles.subMenuItem}>
             <Text style={styles.subMenuItemText}>Logout</Text>
           </TouchableOpacity>
@@ -32,11 +29,6 @@ const SubMenu = ({ onLogout, isOpen }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    position: 'relative',
-    alignItems: 'flex-end',
-    marginTop: 10,
-  },
   menuButton: {
     paddingHorizontal: 10,
   },

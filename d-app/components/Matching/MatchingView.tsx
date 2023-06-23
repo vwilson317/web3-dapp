@@ -9,10 +9,17 @@ import Match from '../../interfaces/Match';
 import Store from '../../store';
 import { useAppSelector, useAppDispatch } from '../../hooks'
 import { selectCount, increment } from '../../features/counter/counterSlice';
+//@ts-ignore
 import styles from '../../src/styles/Global.scss';
+// import { setCurrentScreens } from '../../features/userSlice';
+import { ScreenType } from '../Drawer';
 
 const MatchingView = ({ navigation }: any) => {
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
+  // useEffect(() => {
+  //     dispatch(setCurrentScreens(ScreenType.Matching))
+  // }, []);
+
   const { state: { contract, accounts } } = useEth();
   const [totalSupply, setTotalSupply] = useState(0);
 
@@ -76,12 +83,6 @@ const MatchingView = ({ navigation }: any) => {
 
     return matches[0];
   }
-
-  useEffect(() => {
-    // debugger
-    // const match = getMatch();
-
-  });
 
   const onClick = async () => {
     dispatch(increment())

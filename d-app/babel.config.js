@@ -8,7 +8,7 @@ module.exports = function(api) {
       "react-native-classname-to-style",
       [
           "react-native-platform-specific-extensions",
-          { extensions: ["scss", "sass"] },
+          { extensions: ["scss", "sass", "css"] },
       ],
   ],
   };

@@ -11,8 +11,7 @@ import ThemeProviderCustom from "../components/ThemeProvider";
 import CreateAccountScreen from "../components/Account/CreateAccountScreen";
 // import ApiProvider from "../components/ApiProvider";
 const ApiProvider = React.lazy(() => import("../components/ApiProvider"));
-// import Loader from "../common/Loader/Loader";
-// import loaderHtml from "../common/Loader/loader.html";
+import Loader from "../common/Loader/Loader";
 
 function App() {
   const Stack = createNativeStackNavigator();
@@ -21,8 +20,7 @@ function App() {
     <ThemeProviderCustom>
       <Provider store={store}>
         <EthProvider>
-          {/* <Suspense fallback={<div dangerouslySetInnerHTML={{ __html: loaderHtml }}></div>}> */}
-          <Suspense fallback={<div>Loading ...</div>} >
+          <Suspense fallback={Loader()}>
             <ApiProvider>
               <NavigationContainer>
                 <Stack.Navigator initialRouteName="Drawer">

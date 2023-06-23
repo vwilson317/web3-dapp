@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoginUser, getLoginUser } from '../../features/userSlice';
 // import { FaUser } from 'react-icons/fa';
@@ -12,10 +12,11 @@ import styles from './LoginHeader.scss';
 //@ts-ignore
 import _ from 'lodash';
 import { useNavigation } from '@react-navigation/native';
-import { LoginUser } from '../../types';
+// import { LoginUser } from '../../types/types';
 import { ServicesContext } from '../ApiProvider';
-import { showToast, ToastType } from '../../common/ToastUtil';
+import ToastContainerWebOnly, { showToast, ToastType } from '../../common/ToastUtil';
 import SubMenu from '../SubMenu';
+import { ScreenType } from '../Drawer';
 
 interface LoginProps {
     icon: IconType; // Replace with the actual icon component you want to use
@@ -30,30 +31,27 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
     const [isOpen, setIsOpen] = useState(false);
     const loginService = useContext(ServicesContext)?.loginApi;
 
+    // useEffect(() => {
+    //     dispatch(setCurrentScreens(ScreenType.Login))
+    // }, []);
+
     const handleLogin = async () => {
-        if (!_.isEmpty(loginUser)) {
-
+        const result: LoginUser = await loginService?.login(username, password);
+        if (_.isEmpty(result)) {
+            showToast(ToastType.error, 'Invalid username or password');
         } else {
-            // Perform login logic here
-            // Call an API to authenticate user credentials
-            const result: LoginUser = await loginService?.login(username, password);
-            if (_.isEmpty(result)) {
-                showToast(ToastType.error, 'Invalid username or password');
-            } else {
-                // Assuming the login was successful, set the user in Redux
-                // const user = { name: username } as LoginUser;
-                dispatch(setLoginUser(result));
-                navigation.navigate('MyMatches');
-            }
+            // Assuming the login was successful, set the user in Redux
+            // const user = { name: username } as LoginUser;
+            dispatch(setLoginUser(result));
+            // navigation.navigate('MyMatches');
         }
-
         // Reset input fields
         // setUsername('');
         // setPassword('');
     };
 
     const handleLogout = () => {
-        dispatch(setLoginUser({} as LoginUser));
+        dispatch(setLoginUser(undefined));
         handleToggleSubMenu();
     };
 
@@ -94,7 +92,7 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
 
     const UserIdComponent = () => {
         return (
-            <TouchableOpacity onPress={handleToggleSubMenu} style={styles.menuButton}>
+            <TouchableOpacity onPress={handleToggleSubMenu}>
                 <View style={[styles2.item, styles.icon]}>
                     <div className={styles.div}>
                         {icon}
@@ -113,6 +111,7 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
             <View className={gStyles.row}>
                 {!_.isEmpty(loginUser) ? UserIdComponent() : <></>}
                 {_.isEmpty(loginUser) ? LoginComponents() : <></>}
+                <ToastContainerWebOnly />
             </View>
         </View>
     );

@@ -29,7 +29,14 @@
     },
     "packagerOpts": {
       "config": "metro.config.js",
-      "sourceExts": ["ts", "tsx", "scss", "sass"]
-    }
-  }
+      "sourceExts": [
+        "ts",
+        "tsx",
+        "scss",
+        "sass"
+      ]
+    },
+    "sdkVersion": "48.0.0"
+  },
+  "name": "d-app"
 }
