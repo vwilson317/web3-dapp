@@ -5,21 +5,21 @@ import SearchView from './Search/SearchView';
 //@ts-ignore
 import styles from '../src/styles/Global.scss';
 import Header from './Header';
-import HomeScreen from './Home';
+import LandingScreen from './LandingScreen';
 import MyMatchesScreen from './MyMatches/MyMatchesScreen';
 import { useAppSelector } from '../hooks';
 import { isLoggedin } from '../features/userSlice';
 //@ts-ignore
 import _ from 'lodash';
 import { useSelector } from 'react-redux';
-import { useNavigationState } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import ViewProfileScreen from './Profile/ViewProfileScreen';
 import CreateAccountScreen from './Account/CreateAccountScreen';
 
 const Drawer = createDrawerNavigator();
 
 export enum ScreenType {
-  Home = 'Home',
+  Landing = 'Landing',
   Matching = 'Matching',
   Search = 'Search',
   MyMatches = 'MyMatches',
@@ -31,29 +31,27 @@ function MyDrawer() {
   const isLoggedIn: boolean = useSelector(isLoggedin);
   // const currentScreen: ScreenType = useSelector(getCurrentScreens);
   const [sreens, setSreens] = useState<object>({
-    Home: HomeScreen
+    Landing: LandingScreen
   });
+  const navigation = useNavigation();
 
   useEffect(() => {
-
-    //@ts-ignore
-    // if (currentScreens) {
-    //   setSreens(currentScreens);
-    // }
-    getScreens();
-
+    getScreens().then(() =>{
+      if(isLoggedIn){
+        navigation.navigate('MyMatches');
+      }
+    })
   }, [isLoggedIn]);
 
-  const getScreens = () => {
+  const getScreens = async () => {
     if (!isLoggedIn) {
       setSreens({
-        Home: HomeScreen,
+        Landing: LandingScreen,
         CreateAccount: CreateAccountScreen
       })
     } else{
       setSreens({
           MyMatches: MyMatchesScreen,
-          Home: HomeScreen,
           Matching: MatchingView,
           Search: SearchView,
           ViewProfile: ViewProfileScreen
@@ -61,7 +59,7 @@ function MyDrawer() {
     }};
 
     return (
-      <Drawer.Navigator initialRouteName="Home"
+      <Drawer.Navigator initialRouteName="Landing"
         screenOptions={({ navigation }) => ({
           headerRight: () => (
             <Header />

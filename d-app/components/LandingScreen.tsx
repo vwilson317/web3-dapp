@@ -4,15 +4,11 @@ import { useDispatch } from "react-redux";
 // import { setCurrentScreens } from "../features/userSlice";
 import { ScreenType } from "./Drawer";
 
-export default function Home() {
-    // const dispatch = useDispatch();
-    // useEffect(() => {
-    //     dispatch(setCurrentScreens(ScreenType.Home))
-    // }, []);
+export default function LandingScreen() {
 
     return(
         <View>
-            <h1>Home Screen</h1>
+            <h1>Landing</h1>
         </View>
     )
 }

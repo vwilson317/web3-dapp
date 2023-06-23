@@ -5,7 +5,7 @@ import { LoginUser } from '../types/global';
 //@ts-ignore
 import _ from 'lodash';
 import { ScreenType } from '../components/Drawer';
-import HomeScreen from '../components/Home';
+import HomeScreen from '../components/LandingScreen';
 import MatchingView from '../components/Matching/MatchingView';
 import SearchView from '../components/Search/SearchView';
 import MyMatchesScreen from '../components/MyMatches/MyMatchesScreen';

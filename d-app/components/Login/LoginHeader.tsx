@@ -43,7 +43,6 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
             // Assuming the login was successful, set the user in Redux
             // const user = { name: username } as LoginUser;
             dispatch(setLoginUser(result));
-            // navigation.navigate('MyMatches');
         }
         // Reset input fields
         // setUsername('');
