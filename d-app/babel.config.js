@@ -5,7 +5,8 @@ module.exports = function(api) {
     plugins: [
       '@babel/plugin-proposal-export-namespace-from',
       'react-native-reanimated/plugin',
-      "react-native-classname-to-style",
+      'react-native-classname-to-style',
+      'nativewind/babel',
       [
           "react-native-platform-specific-extensions",
           { extensions: ["scss", "sass", "css"] },
