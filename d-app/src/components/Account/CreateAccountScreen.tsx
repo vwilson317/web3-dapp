@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { View, TextInput, Button } from 'react-native';
 import { showToast, ToastType } from '../../common/ToastUtil';
 import { useNavigation } from '@react-navigation/native';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch } from '../../../hooks';
 import { setLoginUser } from '../../features/userSlice';
 import { ServicesContext } from '../ApiProvider';
 import { ScreenType } from '../Drawer';

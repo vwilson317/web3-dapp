@@ -1,23 +1,26 @@
 import React, { createContext, Suspense } from "react";
-import EthProvider from "../contexts/EthContext/EthProvider";
+import EthProvider from "./contexts/EthContext/EthProvider";
 import { Provider, createDispatchHook } from 'react-redux';
 import store from '../store';
 import { NavigationContainer } from '@react-navigation/native';
 // const NavigationContainer = React.lazy(() => import("@react-navigation/native"));
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-const MyDrawer = React.lazy(() => import("../components/Drawer"));
+const MyDrawer = React.lazy(() => import("./components/Drawer"));
 // import { GlobalScss } from "../styles/Global.scss";
-import ThemeProviderCustom from "../components/ThemeProvider";
-import CreateAccountScreen from "../components/Account/CreateAccountScreen";
+// import ThemeProviderCustom from "./components/ThemeProvider";
+import CreateAccountScreen from "./components/Account/CreateAccountScreen";
 // import ApiProvider from "../components/ApiProvider";
-const ApiProvider = React.lazy(() => import("../components/ApiProvider"));
-import Loader from "../common/Loader/Loader";
+const ApiProvider = React.lazy(() => import("./components/ApiProvider"));
+import Loader from "./common/Loader/Loader";
+import { TailwindProvider } from 'tailwind-rn';
+import utilities from '../tailwind.json';
 
 function App() {
   const Stack = createNativeStackNavigator();
 
   return (
-    <ThemeProviderCustom>
+    // <ThemeProviderCustom>
+    // <TailwindProvider value={utilities}>
       <Provider store={store}>
         <EthProvider>
           <Suspense fallback={Loader()}>
@@ -32,7 +35,9 @@ function App() {
           </Suspense>
         </EthProvider>
       </Provider>
-    </ThemeProviderCustom>
+    // </TailwindProvider>
+
+    // </ThemeProviderCustom>
     // </Suspense>
   );
 }

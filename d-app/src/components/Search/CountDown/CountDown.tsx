@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useAppSelector } from '../../../hooks';
+import { useAppSelector } from '../../../../hooks';
 import styled, { keyframes } from 'styled-components';
 
 // Define the keyframe animation for the countdown animation

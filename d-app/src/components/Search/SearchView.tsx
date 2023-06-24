@@ -1,13 +1,13 @@
 import SearchResults from "./SearchResults";
 import SearchBar from "./SearchBar";
 import { useState, useEffect } from "react";
-import { useAppSelector } from '../../hooks'
+import { useAppSelector } from '../../../hooks'
 import { getUsers } from "../../features/userSlice";
 import { set } from "react-native-reanimated";
 import { StyleSheet, View } from 'react-native';
 
 // import '../styles/SearchingView.module.scss';
-import styles from '../../src/styles/Global.scss';
+import styles from '../../styles/Global.scss';
 import CountDown from "./CountDown/CountDown";
 
 const SearchView = ({ navigation }: any) => {

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from '../store';
+import type { RootState } from '../../store';
 import getUsersAsync from '../services/UserService';
-import { LoginUser } from '../types/global';
+import { LoginUser } from '../../types/global';
 //@ts-ignore
 import _ from 'lodash';
 import { ScreenType } from '../components/Drawer';

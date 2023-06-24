@@ -2,10 +2,10 @@ import { FC, ReactElement, useContext }  from 'react';
 import { set } from "../../features/userSlice";
 import UserService from "../../services/UserService";
 // import getUsers from "../services/UserService";
-import { useAppDispatch } from '../../hooks'
+import { useAppDispatch } from '../../../hooks'
 import { useState } from "react";
 import { Button, Input } from "@rneui/themed";
-import { ServicesContext } from "./../ApiProvider";
+import { ServicesContext } from "../ApiProvider";
 
 export default function SearchBar(): ReactElement {
     const [input, setInput] = useState('');

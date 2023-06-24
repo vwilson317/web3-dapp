@@ -3,11 +3,10 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import MatchingView from './Matching/MatchingView';
 import SearchView from './Search/SearchView';
 //@ts-ignore
-import styles from '../src/styles/Global.scss';
 import Header from './Header';
 import LandingScreen from './LandingScreen';
 import MyMatchesScreen from './MyMatches/MyMatchesScreen';
-import { useAppSelector } from '../hooks';
+import { useAppSelector } from '../../hooks';
 import { isLoggedin } from '../features/userSlice';
 //@ts-ignore
 import _ from 'lodash';

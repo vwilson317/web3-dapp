@@ -10,13 +10,13 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import Styles from './Profile.scss';
-import GStyles from '../../src/styles/Global.scss';
+// import Styles from './Profile.scss';
+// import GStyles from '../../src/styles/Global.scss';
 // very slow rendering :/
 // import manPng from '../../assets/man.png';
 // import womanPng from '../../assets/girl.png';
-const manPng = require('../../assets/man.png');
-const womanPng = require('../../assets/girl.png');
+const manPng = require('../../../assets/man.png');
+const womanPng = require('../../../assets/girl.png');
 
 const ProfileCard = ({ name, gender }: User) => {
   const { state: { contract, accounts } } = useEth();

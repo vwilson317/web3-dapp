@@ -5,7 +5,7 @@ import { setLoginUser, getLoginUser } from '../../features/userSlice';
 import { Button, Input, Text } from '@rneui/themed';
 import { IconType } from 'react-icons/lib';
 //@ts-ignore
-import gStyles from '../../src/styles/Global.scss';
+import gStyles from '../../styles/Global.scss';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 //@ts-ignore
 import styles from './LoginHeader.scss';

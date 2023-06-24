@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 //@ts-ignore
-import gStyles from '../src/styles/Global.scss';
+import gStyles from '../styles/Global.scss';
 
 interface SubMenuProps {
   onLogout: () => void;
