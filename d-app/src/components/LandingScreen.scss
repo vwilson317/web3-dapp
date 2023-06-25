@@ -1,0 +1,92 @@
+// landingScreen.scss
+
+.flex-1 {
+    flex: 1;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  .bg-white {
+    background-color: #ffffff;
+  }
+  
+  .w-32 {
+    width: 32px;
+  }
+  
+  .h-32 {
+    height: 32px;
+  }
+  
+  .mb-8 {
+    margin-bottom: 8px;
+  }
+  
+  .text-2xl {
+    font-size: 2rem;
+  }
+  
+  .font-bold {
+    font-weight: bold;
+  }
+  
+  .text-gray-800 {
+    color: #333333;
+  }
+  
+  .mb-4 {
+    margin-bottom: 4px;
+  }
+  
+  .text-lg {
+    font-size: 1.5rem;
+  }
+  
+  .text-gray-600 {
+    color: #666666;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .py-3 {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  
+  .px-8 {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  
+  .rounded-full {
+    border-radius: 9999px;
+  }
+  
+  .bg-blue-500 {
+    background-color: #007bff;
+  }
+  
+  .text-white {
+    color: #ffffff;
+  }
+  
+  .text-blue-500 {
+    color: #007bff;
+  }
+  
+  .text-blue-500:hover {
+    text-decoration: underline;
+  }
+  
+  .mt-4 {
+    margin-top: 4px;
+  }
+  

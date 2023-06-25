@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { useTailwind } from 'tailwind-rn';
+// import { useTailwind } from 'nativewind';
+import './LandingScreen.scss';
 
 const LandingScreen = () => {
-  const tw = useTailwind();
+  // const tw = useTailwind();
   return (
     <View className={'flex-1 items-center justify-center bg-white'}>
       {/* <Image

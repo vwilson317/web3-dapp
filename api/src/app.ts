@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import _ from 'lodash';
 import { Request, Response } from 'express';
-import users from './services/UserService';
+import { users } from './services/UserService';
 import userRoutes from './routes/userRoutes';
 
 dotenv.config();
