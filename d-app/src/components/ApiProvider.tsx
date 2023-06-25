@@ -11,8 +11,8 @@ interface ServiceContextProps {
 export const ServicesContext = React.createContext<ServiceContextProps | undefined>(null);
 
 const ApiProvider: React.FC = ({ children }) => {
-    const userApi = new UserService("http://localhost:3333");
-    const loginApi = new LoginService("http://localhost:3333");
+    const userApi = new UserService("http://localhost:3333/api");
+    const loginApi = new LoginService("http://localhost:3333/api");
     
     const ContextValue: ServiceContextProps = {
         userApi,

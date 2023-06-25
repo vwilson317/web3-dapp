@@ -3,7 +3,6 @@ import { Request, Response } from 'express';
 import _ from 'lodash';
 import loginAsync from '../services/AuthService';
 
-
 export const login = async (req: Request, res: Response) => {
   const loginRequest = req.body;
 
