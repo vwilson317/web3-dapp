@@ -19,7 +19,7 @@ interface LoginUser {
 }
 
 interface Asset {
-    src: string; // url
+    locationUri: string; // url
     type: AssetType;
     metaData: any;
 }
