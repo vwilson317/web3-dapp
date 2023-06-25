@@ -13,7 +13,7 @@ import CreateAccountScreen from "./components/Account/CreateAccountScreen";
 const ApiProvider = React.lazy(() => import("./components/ApiProvider"));
 import Loader from "./common/Loader/Loader";
 // import "./nativewind-output";
-// import "./styles/Global.scss";
+import "./styles/Global.scss";
 
 function App() {
   const Stack = createNativeStackNavigator();
