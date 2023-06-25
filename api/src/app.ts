@@ -1,10 +1,10 @@
 import express from 'express';
 import dotenv from 'dotenv';
+//@ts-ignore
 import cors from 'cors';
-import _ from 'lodash';
-import { Request, Response } from 'express';
-import { users } from './services/UserService';
-import userRoutes from './routes/userRoutes';
+import userRoutes from './routes/userRoutes'; // might need to import login routes
+// import loginRoutes from './routes/loginRoutes';
+import { Auth } from './services/UserService'; // move this
 
 dotenv.config();
 
@@ -14,24 +14,10 @@ const port = process.env.PORT || 3333;
 
 app.use(express.json());
 
+Auth();
+
 app.use('/api', userRoutes);
-
-app.post('/login', (req: Request, res: Response) => {
-  const loginRequest = req.body;
-  let loginUser = users.filter(
-    (u) =>
-      (u.email === loginRequest.email || u.displayName === loginRequest.displayName) &&
-      u.password === loginRequest.password
-  )[0];
-
-  if (!_.isEmpty(loginUser)) {
-    loginUser.lastSearchDt = new Date(Date.now() + 1 * 60000);
-    loginUser.assets = [];
-    res.json(loginUser);
-  } else {
-    res.status(204).json({ error: 'User not found' });
-  }
-});
+// app.use('/api', loginRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

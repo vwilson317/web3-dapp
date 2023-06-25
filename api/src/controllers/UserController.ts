@@ -12,7 +12,7 @@ export const getUsers = async (req: Request, res: Response) => {
 };
 
 // // Get a user by ID
-export const getUserById = async (req, res) => {
+export const getUserById = async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
   const user = users.find((u) => u.id === id);
 
@@ -24,7 +24,7 @@ export const getUserById = async (req, res) => {
 };
 
 // // Create a new user
-export const create = async (req, res) => {
+export const create = async (req: Request, res: Response) => {
   const user = req.body;
   user.id = users.length + 1;
   users.push(user);
@@ -33,7 +33,7 @@ export const create = async (req, res) => {
 };
 
 // // Update a user
-export const update = async (req, res) => {
+export const update = async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
   const userIndex = users.findIndex((u) => u.id === id);
 
@@ -46,7 +46,7 @@ export const update = async (req, res) => {
 };
 
 // // Delete a user
-export const deleteUser = async (req, res) => {
+export const deleteUser = async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
   const userIndex = users.findIndex((u) => u.id === id);
 
