@@ -12,8 +12,8 @@ import CreateAccountScreen from "./components/Account/CreateAccountScreen";
 // import ApiProvider from "../components/ApiProvider";
 const ApiProvider = React.lazy(() => import("./components/ApiProvider"));
 import Loader from "./common/Loader/Loader";
-import { TailwindProvider } from 'tailwind-rn';
-import utilities from '../tailwind.json';
+// import "./nativewind-output";
+// import "./styles/Global.scss";
 
 function App() {
   const Stack = createNativeStackNavigator();
