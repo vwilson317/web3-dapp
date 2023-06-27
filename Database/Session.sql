@@ -1,4 +1,4 @@
-CREATE TABLE [osf].[Session]
+CREATE TABLE [dbo].[Session]
 (
     [Id] INT IDENTITY(1,1) NOT NULL,
     [GameId] INT NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE [osf].[Session]
     PRIMARY KEY ([Id]),
     FOREIGN KEY ([GameId]) REFERENCES [dbo].[Game]([Id]),
     FOREIGN KEY ([UserId]) REFERENCES [dbo].[User]([Id]),
-    FOREIGN KEY ([ExternalPlayerId]) REFERENCES [osf].[ExternalPlayer]([Id]),
+    FOREIGN KEY ([ExternalPlayerId]) REFERENCES [dbo].[ExternalPlayer]([Id]),
 
     CONSTRAINT CK_Session_ExternalPlayerId_User_NoNullCheck
     CHECK([ExternalPlayerId] IS NOT NULL OR [UserId] IS NOT NULL)

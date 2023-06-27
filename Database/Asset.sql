@@ -5,7 +5,7 @@ CREATE TABLE [dbo].[Asset]
   FOREIGN KEY (UserId) REFERENCES [dbo].[User](Id),
   [Type] TINYINT NOT NULL,
   [FileName] NVARCHAR(255) NOT NULL,
-  [LocationUri] NVARCHAR(MAX) NOT NULL
+  [LocationUri] NVARCHAR(max) NOT NULL
 
-  CONSTRAINT unique_asset UNIQUE ([FileName], [LocationUri], [Type], [UserId])
+  -- CONSTRAINT unique_asset UNIQUE ([FileName], [LocationUri], [Type], [UserId])
 )

@@ -29,5 +29,24 @@ FROM #TempTable;
 -- Drop the temporary table
 DROP TABLE #TempTable;
 
--- delete from [dbo].[User]
--- select * from temp_ids
+-- ContactType Static Data
+INSERT INTO [dbo].[ContactType] ([Id], [Label]) VALUES
+    (0, 'Personal Phone Number'),
+    (1, 'LinkedIn'),
+    (2, 'Email'),
+    (3, 'Work Phone Number'),
+    (4, 'Instagram'),
+    (5,'SnapChat'),
+    (6,'Facebook'),
+    (7,'FakeNumber'),
+    (8,'Work Email'),
+    (9,'SimpleApp DisplayName'),
+    (10,'Other');
+
+-- QuestionType static data
+INSERT INTO [dbo].[QuestionType] ([Id], [Label]) VALUES
+    (0, 'Multiple Choice Single Answer'),
+    (1, 'Multiple Choice Multi Answer'),
+    (2, 'True False'),
+    (3,'Summary'),
+    (4,'Fill In The Blank');
