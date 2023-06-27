@@ -14,7 +14,20 @@ export default class UserApiService extends ApiService {
     return this.get<User[]>('/users');
   }
 
-  createUser(user: User): Promise<User> {
+  login(lookupStr: string, password: string): Promise<User> {
+    let loginRequest = {} as LoginRequest;
+    // no @ in disaplyName allowed, assume email
+    if (lookupStr.includes('@')) {
+      loginRequest.email = lookupStr;
+    } else {
+      loginRequest.displayName = lookupStr;
+    }
+    loginRequest.password = password;
+
+    return this.post<User>('/users/login', loginRequest);
+  }
+
+  create(user: User): Promise<User> {
     return this.post<User>('/users', user);
   }
 

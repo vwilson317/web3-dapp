@@ -1,21 +1,23 @@
+declare module "*.css";
 declare module '*.scss' {
     const content: { [styleName: string]: string };
     export default content;
 }
 
-interface User {
-    id: number;
-    name: string;
-    gender: string;
+interface LoginRequest {
+    email: number;
+    displayName: string;
+    password: string;
 }
 
-interface LoginUser {
-    id: number;
+interface User {
+    id?: number;
     name: string;
-    lastSearchDt: Date;
-    assets: Asset[];
+    lastSearchDt?: Date;
+    assets?: Asset[];
     displayName: string;
-    //ignores password
+    password?: string;
+    gender?: string;
 }
 
 interface Asset {

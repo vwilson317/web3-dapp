@@ -25,18 +25,18 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({ icon }) => {
     const navigation = useNavigation();
     const dispatch = useDispatch();
-    const [username, setUsername] = useState<string>('john@example.com');//useState<string>('John Doe (Display Name)')
-    const [password, setPassword] = useState<string>('123');//useState('');
+    const [username, setUsername] = useState<string>('user719@example.com');//useState<string>('John Doe (Display Name)')
+    const [password, setPassword] = useState<string>('password719');//useState('');
     const loginUser = useSelector(getLoginUser);
     const [isOpen, setIsOpen] = useState(false);
-    const loginService = useContext(ServicesContext)?.loginApi;
+    const userService = useContext(ServicesContext)?.userApi;
 
     // useEffect(() => {
     //     dispatch(setCurrentScreens(ScreenType.Login))
     // }, []);
 
     const handleLogin = async () => {
-        const result: LoginUser = await loginService?.login(username, password);
+        const result: LoginUser = await userService?.login(username, password);
         if (_.isEmpty(result)) {
             showToast(ToastType.error, 'Invalid username or password');
         } else {
