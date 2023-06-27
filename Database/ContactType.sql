@@ -3,7 +3,7 @@ CREATE TABLE [dbo].[ContactType]
   [Id] TINYINT PRIMARY KEY NOT NULL,
   [Label] NVARCHAR(30) NOT NULL
 )
-
+GO;
 INSERT INTO [dbo].[ContactType] ([Id], [Label]) VALUES
     (0, 'Personal Phone Number'),
     (1, 'LinkedIn'),
