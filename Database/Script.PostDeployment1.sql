@@ -52,3 +52,55 @@ INSERT INTO [dbo].[QuestionType] ([Id], [Label]) VALUES
     (2, 'True False'),
     (3,'Summary'),
     (4,'Fill In The Blank');
+
+DECLARE @MinGames INT = 1;
+DECLARE @MaxGames INT = 10;
+DECLARE @UserCount INT = 20;
+
+-- Create a temporary table to hold user IDs
+CREATE TABLE #UserIds (
+    [UserId] INT
+);
+
+-- Insert user IDs into the temporary table
+INSERT INTO #UserIds ([UserId])
+SELECT [Id]
+FROM [dbo].[User]
+
+-- Variables for game details
+DECLARE @UserId INT;
+DECLARE @Title NVARCHAR(255);
+DECLARE @CreatedUtc DATETIME2;
+DECLARE @UpdatedUtc DATETIME2;
+
+-- Loop through each user
+WHILE @UserCount > 0
+BEGIN
+    -- Select a random number of games to create for the current user
+    DECLARE @GamesCount INT = ABS(CHECKSUM(NEWID())) % (@MaxGames - @MinGames + 1) + @MinGames;
+    
+    -- Set the user ID for the current iteration
+    SELECT TOP 1 @UserId = [UserId]
+    FROM #UserIds;
+    
+    -- Generate and insert games for the current user
+    WHILE @GamesCount > 0
+    BEGIN
+        SET @Title = 'Game ' + CAST(ABS(CHECKSUM(NEWID())) % 1000 AS NVARCHAR(255));
+        SET @CreatedUtc = GETUTCDATE();
+        SET @UpdatedUtc = GETUTCDATE();
+        
+        INSERT INTO [dbo].[Game] ([UserId], [Title], [CreatedUtc], [UpdatedUtc])
+        VALUES (@UserId, @Title, @CreatedUtc, @UpdatedUtc);
+        
+        SET @GamesCount = @GamesCount - 1;
+    END;
+    
+    -- Remove the processed user ID from the temporary table
+    DELETE FROM #UserIds WHERE [UserId] = @UserId;
+    
+    SET @UserCount = @UserCount - 1;
+END;
+
+-- Drop the temporary table
+DROP TABLE #UserIds;

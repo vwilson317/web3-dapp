@@ -1,3 +1,4 @@
+import { User } from '../../types/global';
 import ApiService from './ApiService';
 
 interface LoginRequest {
@@ -7,7 +8,7 @@ interface LoginRequest {
 }
 
 export default class LoginService extends ApiService {
-  login(lookupStr: string, password: string): Promise<LoginUser> {
+  login(lookupStr: string, password: string): Promise<User> {
     let loginRequest = {} as LoginRequest;
     // no @ in disaplyName allowed, assume email
     if (lookupStr.includes('@')) {
@@ -17,6 +18,6 @@ export default class LoginService extends ApiService {
     }
     loginRequest.password = password;
 
-    return this.post<LoginUser>('/login', loginRequest);
+    return this.post<User>('/login', loginRequest);
   }
 }

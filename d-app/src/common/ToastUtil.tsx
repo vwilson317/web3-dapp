@@ -1,6 +1,6 @@
 import { Platform, ToastAndroid } from 'react-native';
 import Toast from 'react-native-toast-message';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast, ToastContainer, ToastOptions } from 'react-toastify';
 
 export enum ToastType {
     success = 'success',
@@ -13,12 +13,22 @@ export const showToast = (type: ToastType, message: string) => {
     if (Platform.OS === 'android') {
         ToastAndroid.show(message, ToastAndroid.LONG);
     } else if (Platform.OS === 'web') {
+        let config =  {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            } as ToastOptions;
         switch (type) {
             case ToastType.success:
-                toast.success(message, { autoClose: 2000 });
+                toast.success(message, config);
                 break;
             case ToastType.error:
-                toast.error(message, { autoClose: false });
+                toast.error(message, config);
                 break;
         }
     }
@@ -35,4 +45,6 @@ export default function ToastContainerWebOnly(){
         return (
             <ToastContainer />
             )
+    else
+        <></>
 }

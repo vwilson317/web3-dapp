@@ -14,16 +14,21 @@ import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import ViewProfileScreen from './Profile/ViewProfileScreen';
 import CreateAccountScreen from './Account/CreateAccountScreen';
+import GameScreen from './Game/GameScreen';
+import GameConfigScreen from './Game/GameConfig';
 
 const Drawer = createDrawerNavigator();
 
 export enum ScreenType {
   Landing = 'Landing',
+  Game = 'Game',
   Matching = 'Matching',
   Search = 'Search',
   MyMatches = 'MyMatches',
   CreateAccount = 'CreateAccount',
-  ViewProfile = "ViewProfile"
+  ViewProfile = "ViewProfile",
+  Play = 'Play',
+  GameConfig = 'GameConfig'
 }
 
 function MyDrawer() {
@@ -35,8 +40,9 @@ function MyDrawer() {
   const navigation = useNavigation();
 
   useEffect(() => {
-    getScreens().then(() =>{
-      if(isLoggedIn){
+    getScreens().then(() => {
+      if (isLoggedIn) {
+        //@ts-ignore
         navigation.navigate('MyMatches');
       }
     })
@@ -48,28 +54,38 @@ function MyDrawer() {
         Landing: LandingScreen,
         CreateAccount: CreateAccountScreen
       })
-    } else{
+    } else {
       setSreens({
-          MyMatches: MyMatchesScreen,
-          Matching: MatchingView,
-          Search: SearchView,
-          ViewProfile: ViewProfileScreen
-        })
-    }};
+        MyMatches: MyMatchesScreen,
+        Matching: MatchingView,
+        Search: SearchView,
+        ViewProfile: ViewProfileScreen,
+        Game: GameScreen,
+        GameConfig: GameConfigScreen
+      })
+    }
+  };
 
-    return (
-      <Drawer.Navigator initialRouteName="Landing"
-        screenOptions={({ navigation }) => ({
-          headerRight: () => (
-            <Header />
-          )
-        })}
-      >
-        {_.map(sreens, (screen: JSX.Element, name: string) => (
-        <Drawer.Screen key={name} name={name} component={screen} />
+  return (
+    <Drawer.Navigator initialRouteName="Landing"
+      screenOptions={({ navigation }) => ({
+        headerRight: () => (
+          <Header />
+        )
+      })}
+    >
+      {_.map(sreens, (screen: JSX.Element, name: string) => (
+        name === 'GameConfig' ?
+        //@ts-ignore
+          <Drawer.Screen key={name} name={name} component={screen} options={
+            {headerShown: false}
+          }/>
+          :
+          //@ts-ignore
+          <Drawer.Screen key={name} name={name} component={screen} />
       ))}
-      </Drawer.Navigator>
-    );
-  }
+    </Drawer.Navigator>
+  );
+}
 
-  export default MyDrawer;
+export default MyDrawer;

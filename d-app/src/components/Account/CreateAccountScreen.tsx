@@ -68,7 +68,6 @@ const CreateAccountScreen: React.FC = () => {
     };
 
     const handleSelectChange = (event: FormEvent<HTMLSelectElement>): void => {
-        debugger
         var selectedIndex = event.currentTarget.selectedIndex;
         setSelectedItem(selectedIndex)
     }

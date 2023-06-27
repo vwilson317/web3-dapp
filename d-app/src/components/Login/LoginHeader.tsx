@@ -12,11 +12,11 @@ import styles from './LoginHeader.scss';
 //@ts-ignore
 import _ from 'lodash';
 import { useNavigation } from '@react-navigation/native';
-// import { LoginUser } from '../../types/types';
 import { ServicesContext } from '../ApiProvider';
 import ToastContainerWebOnly, { showToast, ToastType } from '../../common/ToastUtil';
 import SubMenu from '../SubMenu';
 import { ScreenType } from '../Drawer';
+import { User } from '../../../types/global';
 
 interface LoginProps {
     icon: IconType; // Replace with the actual icon component you want to use
@@ -27,7 +27,7 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
     const dispatch = useDispatch();
     const [username, setUsername] = useState<string>('user719@example.com');//useState<string>('John Doe (Display Name)')
     const [password, setPassword] = useState<string>('password719');//useState('');
-    const loginUser = useSelector(getLoginUser);
+    const user = useSelector(getLoginUser);
     const [isOpen, setIsOpen] = useState(false);
     const userService = useContext(ServicesContext)?.userApi;
 
@@ -36,7 +36,7 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
     // }, []);
 
     const handleLogin = async () => {
-        const result: LoginUser = await userService?.login(username, password);
+        const result: User = await userService?.login(username, password);
         if (_.isEmpty(result)) {
             showToast(ToastType.error, 'Invalid username or password');
         } else {
@@ -50,6 +50,7 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
     };
 
     const handleLogout = () => {
+        //@ts-ignore
         dispatch(setLoginUser(undefined));
         handleToggleSubMenu();
     };
@@ -59,6 +60,7 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
     };
 
     const createPress = () => {
+        //@ts-ignore
         navigation.navigate('CreateAccount');
     }
 
@@ -94,11 +96,13 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
             <TouchableOpacity onPress={handleToggleSubMenu}>
                 <View style={[styles2.item, styles.icon]}>
                     <div className={styles.div}>
+                        {/*@ts-ignore*/}
                         {icon}
                     </div>
                 </View>
+                {/*@ts-ignore*/}
                 <View className={styles2.item}>
-                    <Text>{loginUser?.displayName}</Text>
+                    <Text>{user?.displayName}</Text>
                 </View>
                 <SubMenu onLogout={handleLogout} isOpen={isOpen} />
             </TouchableOpacity>
@@ -108,9 +112,9 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
     return (
         <View className={gStyles.container}>
             <View className={gStyles.row}>
-                {!_.isEmpty(loginUser) ? UserIdComponent() : <></>}
-                {_.isEmpty(loginUser) ? LoginComponents() : <></>}
-                <ToastContainerWebOnly />
+                {!_.isEmpty(user) ? UserIdComponent() : <></>}
+                {_.isEmpty(user) ? LoginComponents() : <></>}
+                {/*@ts-ignore*/}
             </View>
         </View>
     );
