@@ -1,4 +1,5 @@
-Use SimpleDB
+USE SimpleDB
+
 -- Create a temporary table
 CREATE TABLE #TempTable (
     id INT,
@@ -8,7 +9,7 @@ CREATE TABLE #TempTable (
 -- Populate the temporary table with 100 records
 DECLARE @Counter INT = 1;
 
-WHILE @Counter <= 100
+WHILE @Counter <= 20
 BEGIN
     INSERT INTO #TempTable (id, gender)
     VALUES (ABS(CHECKSUM(NEWID())) % 1000, CAST(ABS(CHECKSUM(NEWID())) % 2 AS BIT));
@@ -17,14 +18,15 @@ BEGIN
 END;
 
 -- Insert users with unique IDs
-INSERT INTO [User] ([Name], DisplayName, Email, [Password], Gender)
+INSERT INTO [dbo].[User] ([Name], DisplayName, Email, [Password], Gender)
 SELECT
-  CONCAT('User', id) AS [Name],
-  CONCAT('User ', id) AS DisplayName,
-  CONCAT('user', id, '@example.com') AS Email,
-  CONCAT('password', id) AS [Password],
-  CASE WHEN id % 2 = 0 THEN 1 ELSE 0 END AS Gender
-FROM #TempTable;
+    CONCAT('User', id) AS [Name],
+    CONCAT('User ', id) AS DisplayName,
+    CONCAT('user', id, '@example.com') AS Email,
+    CONCAT('password', id) AS [Password],
+    CASE WHEN id % 2 = 0 THEN 1 ELSE 0 END AS Gender
+FROM #TempTable
+WHERE CONCAT('User', id) NOT IN (SELECT [Name] FROM [User]);
 
 -- Drop the temporary table
 DROP TABLE #TempTable;
