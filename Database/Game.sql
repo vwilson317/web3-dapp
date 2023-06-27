@@ -1,0 +1,6 @@
+CREATE TABLE [dbo].[Game] (
+    [Id] INT IDENTITY(1,1) PRIMARY KEY,
+    [Title] NVARCHAR(255) NOT NULL,
+    [CreatedUtc] DATETIME2 NOT NULL,
+    [UpdatedUtc] DATETIME2 NOT NULL,
+);
