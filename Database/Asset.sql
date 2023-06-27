@@ -6,4 +6,6 @@ CREATE TABLE [dbo].[Asset]
   [Type] TINYINT NOT NULL,
   [FileName] NVARCHAR(255) NOT NULL,
   [LocationUri] NVARCHAR(MAX) NOT NULL
+
+  CONSTRAINT unique_asset UNIQUE ([FileName], [LocationUri], [Type], [UserId])
 )
