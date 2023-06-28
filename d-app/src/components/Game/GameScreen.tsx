@@ -20,8 +20,9 @@ const GameScreen = () => {
 
     useEffect(() => {
         //@ts-ignore
-        gamesApi?.getAsync(user?.id).then((usersGames) => {
-            setGames(usersGames);
+        if(!_.isEmpty(user))
+            gamesApi?.getAsync(user?.id).then((usersGames) => {
+                setGames(usersGames);
         });
     }, [user]);
 
