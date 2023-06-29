@@ -1,5 +1,4 @@
 //@ts-ignore
-import styles from '../../styles/Global.scss';
 import { View } from "react-native";
 import InitDisplay from './InitDisplay';
 //@ts-ignore
@@ -22,15 +21,16 @@ const GameScreen = () => {
         //@ts-ignore
         if(!_.isEmpty(user))
             gamesApi?.getAsync(user?.id).then((usersGames) => {
+                debugger
                 setGames(usersGames);
         });
     }, [user]);
 
     return (
-        <View className={styles.Container}>
-            <View className={styles.Row}>
+        <View>
+            <View>
                 <h2>Game Screen</h2>
-                {_.isEmpty(games) ? <InitDisplay /> : games.map((game) => {
+                {_.isEmpty(games) ? <InitDisplay /> : games?.map((game) => {
                     return (
                         <Game {...game} />
                     )

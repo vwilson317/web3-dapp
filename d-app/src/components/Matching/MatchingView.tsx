@@ -10,7 +10,6 @@ import Store from '../../../store';
 import { useAppSelector, useAppDispatch } from '../../../hooks'
 import { selectCount, increment } from '../../features/counter/counterSlice';
 //@ts-ignore
-import styles from '../../styles/Global.scss';
 // import { setCurrentScreens } from '../../features/userSlice';
 import { ScreenType } from '../Drawer';
 
@@ -91,8 +90,8 @@ const MatchingView = ({ navigation }: any) => {
   }
 
   return (
-    <View className={styles.container}>
-      <View className={styles.row}>
+    <View>
+      <View>
         {getMatch().users.map((user: User) => {
           return <ProfileCard key={user.id} {...user} />
         })}

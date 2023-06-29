@@ -7,7 +7,6 @@ import { set } from "react-native-reanimated";
 import { StyleSheet, View } from 'react-native';
 
 // import '../styles/SearchingView.module.scss';
-import styles from '../../styles/Global.scss';
 import CountDown from "../CountDown/CountDown";
 
 const SearchView = ({ navigation }: any) => {
@@ -26,9 +25,9 @@ const SearchView = ({ navigation }: any) => {
         }
     };
     return (
-        <View className={styles.container}>
-            <View className={styles.row}>
-                <div className="test">
+        <View>
+            <View>
+                <div>
                     <h1>Search View</h1>
                     <SearchBar />
                     {/* <CountDown /> */}

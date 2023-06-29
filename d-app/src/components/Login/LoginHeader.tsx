@@ -5,7 +5,6 @@ import { setLoginUser, getLoginUser } from '../../features/userSlice';
 import { Button, Input, Text } from '@rneui/themed';
 import { IconType } from 'react-icons/lib';
 //@ts-ignore
-import gStyles from '../../styles/Global.scss';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 //@ts-ignore
 import styles from './LoginHeader.scss';
@@ -110,8 +109,8 @@ const Login: React.FC<LoginProps> = ({ icon }) => {
     }
 
     return (
-        <View className={gStyles.container}>
-            <View className={gStyles.row}>
+        <View>
+            <View>
                 {!_.isEmpty(user) ? UserIdComponent() : <></>}
                 {_.isEmpty(user) ? LoginComponents() : <></>}
                 {/*@ts-ignore*/}

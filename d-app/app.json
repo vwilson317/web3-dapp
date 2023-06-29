@@ -15,27 +15,30 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.dapp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.dapp"
     },
     "web": {
       "favicon": "./assets/favicon.png",
-      "bundler": "metro"
+      // "bundler": "metro"
     },
-    "packagerOpts": {
-      "config": "metro.config.js",
-      "sourceExts": [
-        "ts",
-        "tsx",
-        "scss",
-        "sass"
-      ]
-    },
+    // "packagerOpts": {
+    //   "config": "metro.config.js",
+    //   "sourceExts": [
+    //     "ts",
+    //     "tsx",
+    //     "scss",
+    //     "sass",
+    //     "css"
+    //   ]
+    // },
     "sdkVersion": "48.0.0"
   },
   "name": "d-app"

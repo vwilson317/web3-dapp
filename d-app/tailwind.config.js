@@ -1,12 +1,15 @@
 /** @type {import('tailwindcss').Config} */
-// import { Config } from 'tailwindcss';
 
 module.exports = {
   content: [
-    '/src/App.tsx',
+    './index.js',
+    './src/App.tsx',
     './src/components/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/common/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/common/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {},
   plugins: [],
+  // corePlugins: require('tailwind-rn/unsupported-core-plugins')
 }

@@ -11,7 +11,7 @@ import { isLoggedin } from '../features/userSlice';
 //@ts-ignore
 import _ from 'lodash';
 import { useSelector } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, NavigationContainer } from '@react-navigation/native';
 import ViewProfileScreen from './Profile/ViewProfileScreen';
 import CreateAccountScreen from './Account/CreateAccountScreen';
 import GameScreen from './Game/GameScreen';
@@ -21,7 +21,7 @@ const Drawer = createDrawerNavigator();
 
 export enum ScreenType {
   Landing = 'Landing',
-  Game = 'Game',
+  Games = 'Games',
   Matching = 'Matching',
   Search = 'Search',
   MyMatches = 'MyMatches',
@@ -60,11 +60,21 @@ function MyDrawer() {
         Matching: MatchingView,
         Search: SearchView,
         ViewProfile: ViewProfileScreen,
-        Game: GameScreen,
-        GameConfig: GameConfigScreen
+        Games: GameScreens//GamesScreens()
       })
     }
   };
+
+  const GamesScreens = () => {
+    const Stack = createDrawerNavigator();
+    
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Games">
+        <Stack.Screen name="Games" component={GameScreen} />
+        <Stack.Screen name="GameConfig" component={GameConfigScreen} />
+      </Stack.Navigator>
+      </NavigationContainer>
+  }
 
   return (
     <Drawer.Navigator initialRouteName="Landing"
@@ -75,12 +85,6 @@ function MyDrawer() {
       })}
     >
       {_.map(sreens, (screen: JSX.Element, name: string) => (
-        name === 'GameConfig' ?
-        //@ts-ignore
-          <Drawer.Screen key={name} name={name} component={screen} options={
-            {headerShown: false}
-          }/>
-          :
           //@ts-ignore
           <Drawer.Screen key={name} name={name} component={screen} />
       ))}

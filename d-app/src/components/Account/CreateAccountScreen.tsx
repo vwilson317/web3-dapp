@@ -9,7 +9,6 @@ import { ScreenType } from '../Drawer';
 import { User } from '../../../types/global';
 import { Input } from '@rneui/themed';
 import { DropdownMultiselectView } from 'expo-dropdown-multiselect';
-import styles from '../../styles/Global.scss';
 
 const CreateAccountScreen: React.FC = () => {
     const [username, setUsername] = useState('test');
@@ -73,8 +72,8 @@ const CreateAccountScreen: React.FC = () => {
     }
 
     return (
-        <View style={{ flex: 1 }} className={styles.container}>
-            <View className={styles.row}>
+        <View style={{ flex: 1 }}>
+            <View>
                 <TextInput
                     placeholder="Username"
                     value={username}

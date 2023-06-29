@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 //@ts-ignore
-import gStyles from '../styles/Global.scss';
 
 interface SubMenuProps {
   onLogout: () => void;
@@ -16,11 +15,11 @@ const SubMenu = ({ onLogout, isOpen }: SubMenuProps) => {
   };
 
   return (
-    <View style={gStyles.container}>
+    <View className='flex-1'>
       {isOpen && (
-        <View style={[gStyles.row, styles.subMenu]}>
-          <TouchableOpacity onPress={handleLogout} style={styles.subMenuItem}>
-            <Text style={styles.subMenuItemText}>Logout</Text>
+        <View>
+          <TouchableOpacity onPress={handleLogout} >
+            <Text>Logout</Text>
           </TouchableOpacity>
         </View>
       )}
