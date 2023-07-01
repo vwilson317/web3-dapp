@@ -3,7 +3,11 @@ import ApiService from "./ApiService";
 
 export default class GameService extends ApiService {
 
-    async getAsync(userId: number): Promise<IGame[]> {
+    async getAsync(id: number): Promise<IGame> {
+        return this.get<IGame>(`/games/${id}`);
+    }
+
+    async getByUserIdAsync(userId: number): Promise<IGame[]> {
         return this.get<IGame[]>(`/games/users/${userId}`);
     }
 

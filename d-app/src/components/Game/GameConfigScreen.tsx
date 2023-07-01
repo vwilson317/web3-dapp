@@ -1,14 +1,23 @@
 import { useRoute } from '@react-navigation/native';
 import { View, Text } from 'react-native';
 import GameConfig from './GameConfig';
-const GameConfigScreen = () => {
-    const route = useRoute();
+//@ts-ignore
+import _ from 'lodash';
+
+const GameConfigScreen = ({ route }) => {
+    // const route = useRoute();
     //@ts-ignore
-    const { gameId } = route.params;
+    debugger
+    const game = route.params.game as IGame;
     return (
         <View>
-            <Text>GameConfigScreen</Text>
-            <GameConfig {...gameId} />
+            {_.isEmpty(game) ? <h1>Select an existing game or Create a New Game</h1>
+                :
+                <>
+                    <h1>Configuration for Game: {game.title}</h1>
+                    <GameConfig game={game} />
+                </>
+            }
         </View>
     )
 

@@ -14,7 +14,7 @@ import CreateAccountScreen from "./components/Account/CreateAccountScreen";
 const ApiProvider = React.lazy(() => import("./components/ApiProvider"));
 import Loader from "./common/Loader/Loader";
 // import "./nativewind-output";
-import ToastContainerWebOnly from "./common/ToastUtil";
+// import ToastContainerWebOnly from "./common/ToastUtil";
 
 function App() {
   const Stack = createNativeStackNavigator();

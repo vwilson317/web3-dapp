@@ -5,18 +5,10 @@
     "version": "0.2.0",
     "configurations": [      
         {
-            "type": "expo",
-            "request": "attach",
-            "name": "Debug Expo app",
-            "projectRoot": "${workspaceFolder}",
-            "bundlerPort": "19000",
-            "bundlerHost": "127.0.0.1"
-        },
-        {
             "name": "Expo Web",
             "type": "chrome",
             "request": "launch",
-            "url": "http://localhost:19001",
+            "url": "http://localhost:19006",
             "webRoot": "${workspaceFolder}"
           }
     ]

@@ -16,6 +16,7 @@ import ViewProfileScreen from './Profile/ViewProfileScreen';
 import CreateAccountScreen from './Account/CreateAccountScreen';
 import GameScreen from './Game/GameScreen';
 import GameConfigScreen from './Game/GameConfig';
+import InitDisplay from './Game/InitDisplay';
 
 const Drawer = createDrawerNavigator();
 
@@ -60,21 +61,21 @@ function MyDrawer() {
         Matching: MatchingView,
         Search: SearchView,
         ViewProfile: ViewProfileScreen,
-        Games: GameScreens//GamesScreens()
+        Games: InitDisplay,
       })
     }
   };
 
-  const GamesScreens = () => {
-    const Stack = createDrawerNavigator();
+  // const GamesScreens = () => {
+  //   const Stack = createDrawerNavigator();
     
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Games">
-        <Stack.Screen name="Games" component={GameScreen} />
-        <Stack.Screen name="GameConfig" component={GameConfigScreen} />
-      </Stack.Navigator>
-      </NavigationContainer>
-  }
+  //   <NavigationContainer>
+  //     <Stack.Navigator initialRouteName="Games">
+  //       <Stack.Screen name="Games" component={GameScreen} />
+  //       <Stack.Screen name="GameConfig" component={GameConfigScreen} />
+  //     </Stack.Navigator>
+  //     </NavigationContainer>
+  // }
 
   return (
     <Drawer.Navigator initialRouteName="Landing"

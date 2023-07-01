@@ -1,5 +1,5 @@
 //@ts-ignore
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import InitDisplay from './InitDisplay';
 //@ts-ignore
 import _ from 'lodash';
@@ -19,23 +19,24 @@ const GameScreen = () => {
 
     useEffect(() => {
         //@ts-ignore
-        if(!_.isEmpty(user))
-            gamesApi?.getAsync(user?.id).then((usersGames) => {
-                debugger
+        if (!_.isEmpty(user)){
+            gamesApi?.getByUserIdAsync(user?.id).then((usersGames) => {
                 setGames(usersGames);
-        });
+            });
+        }
+
     }, [user]);
 
     return (
         <View>
-            <View>
-                <h2>Game Screen</h2>
-                {_.isEmpty(games) ? <InitDisplay /> : games?.map((game) => {
+            <h2>Game Screen</h2>
+            <>
+                {_.isEmpty(games) ? <Text>No Games Available</Text> : games?.map((game) => {
                     return (
                         <Game {...game} />
                     )
                 })};
-            </View>
+            </>
         </View>
     )
 };

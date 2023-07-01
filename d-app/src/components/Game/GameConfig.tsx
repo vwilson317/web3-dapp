@@ -5,12 +5,14 @@ import { Switch, TextInput, View, Text } from "react-native";
 import { useState } from "react";
 import { StyleSheet } from "react-native";
 import { Button } from "@rneui/themed";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import GameConfigScreen from "./GameConfigScreen";
 
 interface GameConfigProps {
     game: IGame;
 }
 
-const GameConfig = ({ game }: GameConfigProps) => {
+const GameConfig = (game: GameConfigProps) => {
     const nav = useNavigation();
     const [passingGrade, setPassingGrade] = useState('');
     const [customGreetingMsgs, setCustomGreetingMsgs] = useState('');
@@ -79,9 +81,6 @@ const GameConfig = ({ game }: GameConfigProps) => {
                 value={questionCount}
                 onChangeText={setQuestionCount}
             />
-
-            {/* Save Button */}
-            <Button title="Save" onPress={handleSaveOnPress} />
         </View>
     );
 };
